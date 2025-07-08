@@ -12,7 +12,7 @@ import serial.tools.list_ports
 import threading
 import time
 import matplotlib.pyplot as plt
-from matplotlib.backends.backend_tkagg import FigureCanvasTkinter
+from matplotlib.backends.backend_tkagg import FigureCanvasTk
 from matplotlib.animation import FuncAnimation
 import re
 from collections import deque
@@ -148,7 +148,7 @@ class MotionTrackerGUI:
         self.ax2.grid(True)
         
         # Create canvas
-        self.canvas = FigureCanvasTkinter(self.fig, plot_frame)
+        self.canvas = FigureCanvasTk(self.fig, plot_frame)
         self.canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
         
         # Animation
