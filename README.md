@@ -8,6 +8,8 @@ STM32F3 Discovery Board ile L3GD20 gyroscope sensörü kullanarak motor kontrol�
 - **Motor Kontrolü**: Gyroscope verilerine göre motor hızı kontrolü  
 - **UART İletişimi**: Real-time veri görüntüleme (115200 baud)
 - **SPI İletişimi**: Gyroscope ile haberleşme
+- **Python GUI**: Real-time grafikler ve veri görselleştirme
+- **Veri Kaydetme**: JSON formatında veri export
 
 ## 🔧 Donanım Bağlantıları
 
@@ -34,11 +36,19 @@ STM32F3 Discovery Board ile L3GD20 gyroscope sensörü kullanarak motor kontrol�
 
 ## 🚀 Kullanım
 
+### STM32 Firmware:
 1. Projeyi STM32CubeIDE'de açın
 2. Donanım bağlantılarını yapın
 3. Kodu derleyip STM32F3 Discovery'ye yükleyin
-4. UART Terminal (YAT Terminal önerilen) ile 115200 baud'da bağlanın
-5. Board'u hareket ettirin ve motor tepkisini gözlemleyin
+
+### GUI Arayüzü:
+4. `python setup_gui.py` komutunu çalıştırın (otomatik kurulum)
+5. GUI'de doğru COM portunu seçin ve "Bağlan" butonuna tıklayın
+6. Real-time gyroscope grafikleri ve motor kontrolü görüntüleyin
+
+### Manuel Terminal:
+- UART Terminal (YAT Terminal) ile 115200 baud'da bağlanın
+- Board'u hareket ettirin ve motor tepkisini gözlemleyin
 
 ## 📁 Proje Yapısı
 
@@ -48,14 +58,28 @@ MotionTracker_UART/
 │   ├── Inc/           # Header dosyaları
 │   └── Src/           # Source dosyaları (main.c, L3GD20.c vb.)
 ├── Drivers/           # STM32 HAL drivers
-└── MotionTracker_UART.ioc  # STM32CubeIDE yapılandırması
+├── gui_interface.py   # Python GUI arayüzü
+├── setup_gui.py       # GUI otomatik kurulum scripti
+├── requirements.txt   # Python kütüphane gereksinimleri
+├── MotionTracker_UART.ioc  # STM32CubeIDE yapılandırması
+└── README.md          # Proje dökümantasyonu
 ```
+
+## 🖥️ GUI Arayüzü Özellikleri
+
+- **Real-time Grafikler**: X, Y, Z gyroscope verileri ve motor hızı
+- **Anlık Veri Gösterimi**: Sayısal değerler ve progress bar
+- **COM Port Yönetimi**: Otomatik port tespiti ve bağlantı kontrolü
+- **Veri Kaydetme**: JSON formatında export
+- **Ham Veri Görüntüsü**: Terminal benzeri veri akışı
+- **Kolay Kurulum**: Otomatik dependency kurulumu
 
 ## 🛠️ Geliştirme Ortamı
 
 - **IDE**: STM32CubeIDE
 - **MCU**: STM32F303VCT6
 - **HAL Library**: STM32F3xx
+- **GUI**: Python 3.7+ (Tkinter, Matplotlib, PySerial)
 - **Terminal**: YAT Terminal (115200 baud)
 
 ## 📝 Notlar
