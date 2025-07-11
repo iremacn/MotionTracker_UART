@@ -1,0 +1,91 @@
+[
+  {
+    "id": "mqtt_in_motor",
+    "type": "mqtt in",
+    "name": "Motor Speed",
+    "topic": "motortracker/data/motor_speed",
+    "broker": "mqtt_broker_config",
+    "x": 150,
+    "y": 100
+  },
+  {
+    "id": "gauge_motor",
+    "type": "ui_gauge",
+    "name": "Motor Speed Gauge",
+    "min": 0,
+    "max": 100,
+    "format": "{{value}}%",
+    "x": 400,
+    "y": 100
+  },
+  {
+    "id": "chart_motor",
+    "type": "ui_chart",
+    "name": "Motor Speed Chart",
+    "group": "dashboard_group",
+    "x": 400,
+    "y": 150
+  },
+  {
+    "id": "mqtt_in_gyro",
+    "type": "mqtt in", 
+    "name": "Gyro Data",
+    "topic": "motortracker/data/all",
+    "broker": "mqtt_broker_config",
+    "x": 150,
+    "y": 250
+  },
+  {
+    "id": "function_parse_gyro",
+    "type": "function",
+    "name": "Parse Gyro JSON",
+    "func": "var data = JSON.parse(msg.payload);\nreturn [\n  {payload: data.gyro_x, topic: 'X'},\n  {payload: data.gyro_y, topic: 'Y'},\n  {payload: data.gyro_z, topic: 'Z'}\n];",
+    "outputs": 3,
+    "x": 350,
+    "y": 250
+  },
+  {
+    "id": "chart_gyro",
+    "type": "ui_chart",
+    "name": "Gyroscope Chart",
+    "group": "dashboard_group",
+    "x": 550,
+    "y": 250
+  },
+  {
+    "id": "button_stop",
+    "type": "ui_button",
+    "name": "STOP",
+    "payload": "{\"speed\":0}",
+    "topic": "motortracker/control/motor_set",
+    "x": 150,
+    "y": 400
+  },
+  {
+    "id": "button_25",
+    "type": "ui_button", 
+    "name": "25%",
+    "payload": "{\"speed\":25}",
+    "topic": "motortracker/control/motor_set",
+    "x": 250,
+    "y": 400
+  },
+  {
+    "id": "button_50",
+    "type": "ui_button",
+    "name": "50%", 
+    "payload": "{\"speed\":50}",
+    "topic": "motortracker/control/motor_set",
+    "x": 350,
+    "y": 400
+  },
+  {
+    "id": "mqtt_out_control",
+    "type": "mqtt out",
+    "name": "Motor Control",
+    "topic": "motortracker/control/motor_set",
+    "broker": "mqtt_broker_config",
+    "x": 500,
+    "y": 400
+  }
+] 

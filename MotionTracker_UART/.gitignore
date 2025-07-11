@@ -1,0 +1,65 @@
+# STM32 Project .gitignore
+
+# Debug files
+Debug/
+*.elf
+*.bin
+*.hex
+*.map
+*.list
+*.lst
+*.lss
+
+# Object files
+*.o
+*.obj
+*.d
+*.su
+*.cyclo
+
+# Generated files
+*.bak
+*.tmp
+*.log
+
+# IDE files
+.settings/
+.cproject
+.project
+.metadata/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Launch files (optional - you might want to keep these)
+*.launch
+
+# Build output
+objects.list
+objects.mk
+sources.mk
+makefile
+
+# Keil files
+*.uvguix*
+*.uvoptx
+*.uvprojx
+*.plg
+*.tra
+*.htm
+*.dep
+*.jlink
+*.bak
+
+# IAR files
+settings/
+*.dep
+*.ewd
+*.ewp
+*.eww
+*.wsdt
+
+# Cache and temporary files
+*.cache
+*.tlog 
